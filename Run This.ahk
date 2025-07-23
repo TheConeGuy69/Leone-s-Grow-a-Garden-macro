@@ -8,7 +8,7 @@ yEggShopPos := A_ScreenHeight / 2 - 120
 
 ;Seed SHop
 seedCheckboxes := []
-MyGui := Gui()
+MyGui := Gui("+AlwaysOnTop")
 MyGui.Add("Text", "x10 y10", "Seed Shop")
 yPos := 40
 for item in ["Carrot","Strawberry","Blueberry","Orange Tulip","Tomato","Corn","Daffodil","Watermelon","Pumpkin","Apple","Bamboo","Coconut","Cactus","Dragon Fruit","Mango","Grape","Mushroom","Pepper","Cacao","Beanstalk","Ember Lily","Sugar Apple","Burning Bud","Giant Pinecone"] {
@@ -57,159 +57,185 @@ MyGui.OnEvent("Close", (*) => ExitApp())
 
 ^j::
     {
+    while true {
+            Loop 30 {
+            Send "{WheelUp}"
+        }
 
-    Loop 30 {
-        Send "{WheelUp}"
-    }
+        Sleep(1000)
 
-    Sleep(1000)
+        Loop 6 {
+            Send "{WheelDown}"
+            Sleep(100)
+        }
 
-    Loop 6 {
-        Send "{WheelDown}"
+        Send "\"
+        Send "{Right down}{Right up}"
+        Send "{Right down}{Right up}"
+        Send "{Right down}{Right up}"
+        Sleep(1000)
+        Send "{Enter}"
+        Send "{Enter}"
+        Send "{Enter}"
+        Send "{Enter}"
+        Send "{Enter}"
+        Sleep(670)
+
+        ;shop
+        Send "e"
+        Sleep(2500)
+
+        ctrl := 0
+        for ctrl in seedCheckboxes {
+            if ctrl.Type = "Checkbox" && ctrl.Value {
+                Send "{Down down}{Down up}"
+                Send "{Enter}"
+                Send "{Down down}{Down up}"
+                Loop 30 {
+                    Send "{Enter}"
+                }
+            } else if ctrl.Type = "Checkbox" {
+                Send "{Down down}{Down up}"
+                Send "{Enter}"
+                Send "{Down down}{Down up}"
+            }
+        }
+
+        Send "\"
+        Sleep(250)
+        Send "\"
+        Send "{Enter}"
         Sleep(100)
-    }
+        Send "{Enter}"
+        Sleep(670)
 
-    Send "\"
-    Send "{Right down}{Right up}"
-    Send "{Right down}{Right up}"
-    Send "{Right down}{Right up}"
-    Sleep(1000)
-    Send "{Enter}"
-    Send "{Enter}"
-    Send "{Enter}"
-    Send "{Enter}"
-    Send "{Enter}"
-    Sleep(670)
+        Send "{Up down}{Up up}"
+        Send "{Enter down}{Enter up}"
+        Send "1"
+        Sleep(250)
+        Click
 
-    ;shop
-    Send "e"
-    Sleep(2500)
+        Sleep(500)
 
-    ctrl := 0
-    for ctrl in seedCheckboxes {
-        if ctrl.Type = "Checkbox" && ctrl.Value {
-            Send "{Down down}{Down up}"
-            Send "{Enter}"
-            Send "{Down down}{Down up}"
-            Loop 30 {
+        Send "e"
+        Sleep(2750)
+        MouseMove xGearShopPos, yGearShopPos
+        Sleep(100)
+
+        MouseMove xGearShopPos-30, yGearShopPos
+        Sleep(250)
+        Click
+        Sleep(100)
+        Sleep(3000)
+        Send "\"
+        Send "\"
+        Send "{Down down}{Down up}"
+        Sleep(100)
+        ;gearshop add
+        ctrl := 0
+        for ctrl in gearCheckboxes {
+            if ctrl.Type = "Checkbox" && ctrl.Value {
+                Send "{Down down}{Down up}"
                 Send "{Enter}"
-            }
-        } else if ctrl.Type = "Checkbox" {
-            Send "{Down down}{Down up}"
-            Send "{Enter}"
-            Send "{Down down}{Down up}"
-        }
-    }
-
-    Send "\"
-    Sleep(250)
-    Send "\"
-    Send "{Enter}"
-    Sleep(100)
-    Send "{Enter}"
-    Sleep(670)
-
-    Send "{Up down}{Up up}"
-    Send "{Enter down}{Enter up}"
-    Send "1"
-    Sleep(250)
-    Click
-
-    Sleep(500)
-
-    Send "e"
-    Sleep(2750)
-    MouseMove xGearShopPos, yGearShopPos
-    Sleep(100)
-
-    MouseMove xGearShopPos-30, yGearShopPos
-    Sleep(250)
-    Click
-    Sleep(100)
-    Sleep(3000)
-    Send "\"
-    Send "\"
-    Send "{Down down}{Down up}"
-    Sleep(100)
-    ;gearshop add
-    ctrl := 0
-    for ctrl in gearCheckboxes {
-        if ctrl.Type = "Checkbox" && ctrl.Value {
-            Send "{Down down}{Down up}"
-            Send "{Enter}"
-            Send "{Down down}{Down up}"
-            Loop 30 {
+                Send "{Down down}{Down up}"
+                Loop 30 {
+                    Send "{Enter}"
+                }
+            } else if ctrl.Type = "Checkbox" {
+                Send "{Down down}{Down up}"
                 Send "{Enter}"
+                Send "{Down down}{Down up}"
             }
-        } else if ctrl.Type = "Checkbox" {
-            Send "{Down down}{Down up}"
-            Send "{Enter}"
-            Send "{Down down}{Down up}"
         }
-    }
-    Send "\"
-    Sleep(250)
-    Send "\"
-    Send "{Enter}"
-    Sleep(100)
-    Send "{Enter}"
-    Sleep(670)
-    Send "{Up down}{Up up}"
-    Send "{Enter}"
-    Send "\"
-    Send "{Down down}{Down up}"
+        Send "\"
+        Sleep(250)
+        Send "\"
+        Send "{Enter}"
+        Sleep(100)
+        Send "{Enter}"
+        Sleep(670)
+        Send "{Up down}{Up up}"
+        Send "{Enter}"
+        Send "\"
+        Send "{Down down}{Down up}"
 
-    Sleep(1000)
-    Send "{A down}"
-    Sleep(750)
-    Send "{A up}"
+        Sleep(1000)
+        Send "{A down}"
+        Sleep(750)
+        Send "{A up}"
 
-    Sleep(500)
+        Sleep(500)
 
-    Send "e"
-    Sleep(2750)
-    MouseMove xEggShopPos, yEggShopPos
-    Sleep(100)
+        Send "e"
+        Sleep(2750)
+        MouseMove xEggShopPos, yEggShopPos
+        Sleep(100)
 
-    MouseMove xEggShopPos-30, yEggShopPos
-    Sleep(250)
-    Click
-    Sleep(100)
-    Sleep(3000)
-    Send "\"
-    Send "{Down down}{Down up}"
-    Sleep(100)
+        MouseMove xEggShopPos-30, yEggShopPos
+        Sleep(250)
+        Click
+        Sleep(100)
+        Sleep(3000)
+        Send "\"
+        Send "{Down down}{Down up}"
+        Sleep(100)
 
-    ctrl := 0
-    for ctrl in eggsCheckboxes {
-        if ctrl.Type = "Checkbox" && ctrl.Value {
-            Send "{Down down}{Down up}"
-            Send "{Enter}"
-            Send "{Down down}{Down up}"
-            Send "{Down down}{Down up}"
-            Loop 30 {
+        ctrl := 0
+        for ctrl in eggsCheckboxes {
+            if ctrl.Type = "Checkbox" && ctrl.Value {
+                Send "{Down down}{Down up}"
                 Send "{Enter}"
+                Send "{Down down}{Down up}"
+                Send "{Down down}{Down up}"
+                Loop 30 {
+                    Send "{Enter}"
+                }
+            } else if ctrl.Type = "Checkbox" {
+                Send "{Down down}{Down up}"
+                Send "{Enter}"
+                Send "{Down down}{Down up}"
+                Send "{Down down}{Down up}"
             }
-        } else if ctrl.Type = "Checkbox" {
-            Send "{Down down}{Down up}"
-            Send "{Enter}"
-            Send "{Down down}{Down up}"
-            Send "{Down down}{Down up}"
         }
-    }
 
-    Send "\"
-    Sleep(250)
-    Send "\"
-    Send "{Enter}"
-    Sleep(100)
-    Send "{Enter}"
-    Sleep(670)
-    Send "{Right down}{Right up}"
-    Send "{Right down}{Right up}"
-    Send "{Right down}{Right up}"
-    Send "{Enter}"
-    Send "\"
+        Send "\"
+        Sleep(250)
+        Send "\"
+        Send "{Enter}"
+        Sleep(100)
+        Send "{Enter}"
+        Sleep(670)
+        Send "{Right down}{Right up}"
+        Send "{Right down}{Right up}"
+        Send "{Right down}{Right up}"
+        Send "{Enter}"
+        Send "\"
+        Sleep(2000)
+        Send "\"
+        Send "{Down down}{Down up}"
+        Send "{Right down}{Right up}"
+        Send "{Enter}"
+        Send "\"
+
+        showCountdown(seconds) {
+        static countdownGui := 0, countdownText := 0
+        if !countdownGui {
+            countdownGui := Gui("+AlwaysOnTop -Caption +ToolWindow")
+            countdownText := countdownGui.Add("Text", "w80 h30 Center", "")
+        }
+        MouseGetPos &mx, &my
+        countdownGui.Show("x" mx+20 " y" my+20 " NoActivate")
+        Loop seconds {
+            countdownText.Text := "Next loop in: " (seconds - A_Index + 1) "s"
+            Sleep(1000)
+        }
+        countdownGui.Hide()
+        }
+
+        MouseMove A_ScreenWidth / 2, A_ScreenHeight / 2
+        showCountdown(300)
+    }
+    
 }
 
 ^h::
