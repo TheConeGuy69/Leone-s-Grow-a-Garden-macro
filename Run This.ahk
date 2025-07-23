@@ -1,7 +1,10 @@
 #Requires AutoHotkey v2.0
 
-xGearShopPos := A_ScreenWidth * (900 / 1440)
-yGearShopPos := A_ScreenHeight * (427 / 900)
+xGearShopPos := A_ScreenWidth - 40
+yGearShopPos := A_ScreenHeight / 2 - 50
+
+xEggShopPos := A_ScreenWidth - 40
+yEggShopPos := A_ScreenHeight / 2 - 120
 
 ;Seed SHop
 seedCheckboxes := []
@@ -14,7 +17,6 @@ for item in ["Carrot","Strawberry","Blueberry","Orange Tulip","Tomato","Corn","D
     seedCheckboxes.Push(ctrl)
     yPos += 25
 }
-
 ;Gear Shop (to the right of Seed Shop)
 gearCheckboxes := []
 MyGui.Add("Text", "x200 y10", "Gear Shop")
@@ -25,8 +27,17 @@ for gear in ["Watering Can","Trowel","Recall Wrench","Basic Sprinkler","Advanced
     gearCheckboxes.Push(ctrl)
     yGearPos += 25
 }
-
+eggsCheckboxes := []
+MyGui.Add("Text", "x200 y440", "Egg Shop")
+yeggPos := 470
+for egg in ["Common Egg","Common Summer Egg","Rare Summer Egg","Mythical Egg","Paradise Egg","Bug Egg"] {
+    ctrl := MyGui.Add("Checkbox", "x200 y" yeggPos, egg)
+    ctrl.Tag := egg
+    eggsCheckboxes.Push(ctrl)
+    yeggPos += 25
+}
 MyGui.Show()
+MyGui.OnEvent("Close", (*) => ExitApp())
 
 ^t::
 {
@@ -36,26 +47,24 @@ MyGui.Show()
 
     Sleep(1000)
 
-    Loop 10 {
+    Loop 6 {
         Send "{WheelDown}"
         Sleep(100)
     }
-    ;MsgBox xGearShopPos, yGearShopPos
-    Click xGearShopPos, yGearShopPos
 
-    MouseGetPos &x, &y
-    MsgBox "Mouse position: " x ", " y
+    
 }
 
 ^j::
-{
+    {
+
     Loop 30 {
         Send "{WheelUp}"
     }
 
     Sleep(1000)
 
-    Loop 10 {
+    Loop 6 {
         Send "{WheelDown}"
         Sleep(100)
     }
@@ -76,6 +85,7 @@ MyGui.Show()
     Send "e"
     Sleep(2500)
 
+    ctrl := 0
     for ctrl in seedCheckboxes {
         if ctrl.Type = "Checkbox" && ctrl.Value {
             Send "{Down down}{Down up}"
@@ -112,7 +122,7 @@ MyGui.Show()
     MouseMove xGearShopPos, yGearShopPos
     Sleep(100)
 
-    MouseMove xGearShopPos+30, yGearShopPos
+    MouseMove xGearShopPos-30, yGearShopPos
     Sleep(250)
     Click
     Sleep(100)
@@ -122,6 +132,7 @@ MyGui.Show()
     Send "{Down down}{Down up}"
     Sleep(100)
     ;gearshop add
+    ctrl := 0
     for ctrl in gearCheckboxes {
         if ctrl.Type = "Checkbox" && ctrl.Value {
             Send "{Down down}{Down up}"
@@ -145,6 +156,60 @@ MyGui.Show()
     Sleep(670)
     Send "{Up down}{Up up}"
     Send "{Enter}"
+    Send "\"
+    Send "{Down down}{Down up}"
+
+    Sleep(1000)
+    Send "{A down}"
+    Sleep(750)
+    Send "{A up}"
+
+    Sleep(500)
+
+    Send "e"
+    Sleep(2750)
+    MouseMove xEggShopPos, yEggShopPos
+    Sleep(100)
+
+    MouseMove xEggShopPos-30, yEggShopPos
+    Sleep(250)
+    Click
+    Sleep(100)
+    Sleep(3000)
+    Send "\"
+    Send "{Down down}{Down up}"
+    Sleep(100)
+
+    ctrl := 0
+    for ctrl in eggsCheckboxes {
+        if ctrl.Type = "Checkbox" && ctrl.Value {
+            Send "{Down down}{Down up}"
+            Send "{Enter}"
+            Send "{Down down}{Down up}"
+            Send "{Down down}{Down up}"
+            Loop 30 {
+                Send "{Enter}"
+            }
+        } else if ctrl.Type = "Checkbox" {
+            Send "{Down down}{Down up}"
+            Send "{Enter}"
+            Send "{Down down}{Down up}"
+            Send "{Down down}{Down up}"
+        }
+    }
+
+    Send "\"
+    Sleep(250)
+    Send "\"
+    Send "{Enter}"
+    Sleep(100)
+    Send "{Enter}"
+    Sleep(670)
+    Send "{Right down}{Right up}"
+    Send "{Right down}{Right up}"
+    Send "{Right down}{Right up}"
+    Send "{Enter}"
+    Send "\"
 }
 
 ^h::
