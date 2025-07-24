@@ -6,6 +6,9 @@ yGearShopPos := A_ScreenHeight / 2 - 50
 xEggShopPos := A_ScreenWidth - 40
 yEggShopPos := A_ScreenHeight / 2 - 120
 
+xEventShopPos := A_ScreenWidth - 40
+yEventShopPos := A_ScreenHeight / 2 - 120
+
 ;Seed SHop
 seedCheckboxes := []
 MyGui := Gui("+AlwaysOnTop")
@@ -36,6 +39,17 @@ for egg in ["Common Egg","Common Summer Egg","Rare Summer Egg","Mythical Egg","P
     eggsCheckboxes.Push(ctrl)
     yeggPos += 25
 }
+
+EventCheckboxes := []
+MyGui.Add("Text", "x390 y10", "Zen Shop")
+yEventPos := 40
+for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar","Zenflare","Zen Crate","Soft Sunshine","Koi","Zen Gnome Crate","Spiked Mango","Pet Shard Tranquil"] {
+    ctrl := MyGui.Add("Checkbox", "x390 y" yEventPos, Event)
+    ctrl.Tag := Event
+    EventCheckboxes.Push(ctrl)
+    yEventPos += 25
+}
+
 MyGui.Show()
 MyGui.OnEvent("Close", (*) => ExitApp())
 
@@ -210,6 +224,77 @@ MyGui.OnEvent("Close", (*) => ExitApp())
         Send "{Right down}{Right up}"
         Send "{Enter}"
         Send "\"
+
+        if EventCheckboxes.Length > 0 {
+            Sleep(1000)
+            Send "{D down}"
+            Sleep(1200)
+            Send "{D up}"
+            Sleep(500)
+            Send "{S down}"
+            Sleep(9500)
+            Send "{S up}"
+
+            Send "e"
+            Sleep(2750)
+            MouseMove xEventShopPos, yEventShopPos
+            Sleep(100)
+
+            MouseMove xEventShopPos-30, yEventShopPos
+            Sleep(250)
+            Click
+            Sleep(100)
+            Sleep(3000)
+            Send "\"
+            Send "{Down down}{Down up}"
+            Sleep(100)
+
+            ctrl := 0
+            index := 1
+            for ctrl in EventCheckboxes {
+                if ctrl.Type = "Checkbox" && ctrl.Value {
+                    if (index = 1 || index = 2 || index = 7 || index = 10) {
+                        Send "{Down down}{Down up}"
+                        Send "{Enter}"
+                        Send "{Down down}{Down up}"
+                        Send "{Down down}{Down up}"
+                    } else {
+                        Send "{Down down}{Down up}"
+                        Send "{Enter}"
+                        Send "{Down down}{Down up}"
+                    }
+                    
+                    Loop 30 {
+                        Send "{Enter}"
+                    }
+                } else if ctrl.Type = "Checkbox" {
+                    if (index = 1 || index = 2 || index = 7 || index = 10) {
+                        Send "{Down down}{Down up}"
+                        Send "{Enter}"
+                        Send "{Down down}{Down up}"
+                        Send "{Down down}{Down up}"
+                    } else {
+                        Send "{Down down}{Down up}"
+                        Send "{Enter}"
+                        Send "{Down down}{Down up}"
+                    }
+                }
+                index++
+            }
+            Send "\"
+            Sleep(250)
+            Send "\"
+            Send "{Enter}"
+            Sleep(100)
+            Send "{Enter}"
+            Sleep(670)
+            Send "{Right down}{Right up}"
+            Send "{Right down}{Right up}"
+            Send "{Right down}{Right up}"
+            Send "{Enter}"
+            Send "\"
+        }
+
         Sleep(2000)
         Send "\"
         Send "{Down down}{Down up}"
@@ -235,7 +320,6 @@ MyGui.OnEvent("Close", (*) => ExitApp())
         MouseMove A_ScreenWidth / 2, A_ScreenHeight / 2
         showCountdown(300)
     }
-    
 }
 
 ^h::
