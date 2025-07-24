@@ -1,5 +1,6 @@
 # Leone's Grow a Garden macro
 This is a macro for the hit roblox game Grow a garden
+
 <img width="509" height="662" alt="image" src="https://github.com/user-attachments/assets/0defeb7e-9677-4b4e-8a68-32ea65567a09" />
 
 ## INSTRUCTIONS FOR USE
