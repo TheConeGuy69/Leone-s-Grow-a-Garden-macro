@@ -139,7 +139,6 @@ MyGui.OnEvent("Close", (*) => ExitApp())
         MouseMove xGearShopPos-30, yGearShopPos
         Sleep(250)
         Click
-        Sleep(100)
         Sleep(3000)
         Send "\"
         Send "\"
@@ -188,7 +187,6 @@ MyGui.OnEvent("Close", (*) => ExitApp())
         MouseMove xEggShopPos-30, yEggShopPos
         Sleep(250)
         Click
-        Sleep(100)
         Sleep(3000)
         Send "\"
         Send "{Down down}{Down up}"
