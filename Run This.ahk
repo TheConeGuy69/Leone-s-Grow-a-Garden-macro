@@ -17,6 +17,7 @@ yPos := 40
 for item in ["Carrot","Strawberry","Blueberry","Orange Tulip","Tomato","Corn","Daffodil","Watermelon","Pumpkin","Apple","Bamboo","Coconut","Cactus","Dragon Fruit","Mango","Grape","Mushroom","Pepper","Cacao","Beanstalk","Ember Lily","Sugar Apple","Burning Bud","Giant Pinecone"] {
     ctrl := MyGui.Add("Checkbox", "x10 y" yPos, item)
     ctrl.Tag := item
+    ctrl.Value := true
     seedCheckboxes.Push(ctrl)
     yPos += 25
 }
@@ -27,6 +28,7 @@ yGearPos := 40
 for gear in ["Watering Can","Trowel","Recall Wrench","Basic Sprinkler","Advanced Sprinkler","Medium Toy","Medium Treat","Godly Sprinkler","Magnifying Glass","Tanning Mirror","Master Sprinkler","Cleaning Spray","Favorite Tool","Harvest Tool","Friendship Pot","Levelup Lollipop"] {
     ctrl := MyGui.Add("Checkbox", "x200 y" yGearPos, gear)
     ctrl.Tag := gear
+    ctrl.Value := true
     gearCheckboxes.Push(ctrl)
     yGearPos += 25
 }
@@ -36,6 +38,7 @@ yeggPos := 470
 for egg in ["Common Egg","Common Summer Egg","Rare Summer Egg","Mythical Egg","Paradise Egg","Bug Egg"] {
     ctrl := MyGui.Add("Checkbox", "x200 y" yeggPos, egg)
     ctrl.Tag := egg
+    ctrl.Value := true
     eggsCheckboxes.Push(ctrl)
     yeggPos += 25
 }
@@ -46,6 +49,7 @@ yEventPos := 40
 for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar","Zenflare","Zen Crate","Soft Sunshine","Koi","Zen Gnome Crate","Spiked Mango","Pet Shard Tranquil"] {
     ctrl := MyGui.Add("Checkbox", "x390 y" yEventPos, Event)
     ctrl.Tag := Event
+    ctrl.Value := true
     EventCheckboxes.Push(ctrl)
     yEventPos += 25
 }
