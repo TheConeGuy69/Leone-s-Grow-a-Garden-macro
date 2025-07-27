@@ -11,4 +11,5 @@ This is a macro for the hit roblox game Grow a garden
      - Turn your camera to face the gear the pet shop.
      - Align it as perfect as possible (There is some wiggle room but not much)
   4. The items in the seed, gear shop and egg shop MUST NOT have the buy option with the price, and it has to be scrolled to the top before starting.
-  5. Press CRTL+J to start the macro. And CRTL + H to stop (or close the menu).
+  5. Recall wrench needs to be in first slot.
+  6. Press CRTL+J to start the macro. And CRTL + H to stop (or close the menu).
