@@ -14,7 +14,7 @@ seedCheckboxes := []
 MyGui := Gui("+AlwaysOnTop")
 MyGui.Add("Text", "x10 y10", "Seed Shop")
 yPos := 40
-for item in ["Carrot","Strawberry","Blueberry","Orange Tulip","Tomato","Corn","Daffodil","Watermelon","Pumpkin","Apple","Bamboo","Coconut","Cactus","Dragon Fruit","Mango","Grape","Mushroom","Pepper","Cacao","Beanstalk","Ember Lily","Sugar Apple","Burning Bud","Giant Pinecone"] {
+for item in ["Carrot","Strawberry","Blueberry","Orange Tulip","Tomato","Corn","Daffodil","Watermelon","Pumpkin","Apple","Bamboo","Coconut","Cactus","Dragon Fruit","Mango","Grape","Mushroom","Pepper","Cacao","Beanstalk","Ember Lily","Sugar Apple","Burning Bud","Giant Pinecone", "Elder Strawberry"] {
     ctrl := MyGui.Add("Checkbox", "x10 y" yPos, item)
     ctrl.Tag := item
     ctrl.Value := true
@@ -46,7 +46,7 @@ for egg in ["Common Egg","Common Summer Egg","Rare Summer Egg","Mythical Egg","P
 EventCheckboxes := []
 MyGui.Add("Text", "x390 y10", "Zen Shop")
 yEventPos := 40
-for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar","Zenflare","Zen Crate","Soft Sunshine","Koi","Zen Gnome Crate","Spiked Mango","Pet Shard Tranquil"] {
+for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar","Zenflare","Zen Crate","Soft Sunshine","Koi","Zen Gnome Crate","Spiked Mango","Pet Shard Tranquil", "Pet Shard Corrupted", "Raiju"] {
     ctrl := MyGui.Add("Checkbox", "x390 y" yEventPos, Event)
     ctrl.Tag := Event
     ctrl.Value := true
@@ -56,6 +56,14 @@ for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar"
 
 MyGui.Show()
 MyGui.OnEvent("Close", (*) => ExitApp())
+
+isAnyChecked(arr) {
+    for ctrl in arr {
+    if ctrl.Type = "Checkbox" && ctrl.Value
+        return true
+    }
+    return false
+}
 
 ^t::
 {
@@ -70,7 +78,22 @@ MyGui.OnEvent("Close", (*) => ExitApp())
         Sleep(100)
     }
 
-    
+    Send "\"
+    Send "{Down down}{Down up}"
+    Send "{Enter Down}{Enter Up}"
+    Sleep(1000)
+    Send "\"
+    Send "{W Down}"
+    Sleep(7000)
+    Send "{W Up}"
+    Sleep(100)
+    Send "{A down}"
+    Sleep(1000)
+    Send "{A up}"
+    Sleep(500)
+    Send "{W Down}"
+    Sleep(1000)
+    Send "{W Up}"
 }
 
 ^j::
@@ -227,15 +250,23 @@ MyGui.OnEvent("Close", (*) => ExitApp())
         Send "{Enter}"
         Send "\"
 
-        if EventCheckboxes.Length > 0 {
+        if isAnyChecked(EventCheckboxes) {
+            Send "\"
+            Send "{Down down}{Down up}"
+            Send "{Enter Down}{Enter Up}"
             Sleep(1000)
-            Send "{D down}"
-            Sleep(1200)
-            Send "{D up}"
+            Send "\"
+            Send "{W Down}"
+            Sleep(7000)
+            Send "{W Up}"
+            Sleep(100)
+            Send "{A down}"
+            Sleep(1000)
+            Send "{A up}"
             Sleep(500)
-            Send "{S down}"
-            Sleep(9500)
-            Send "{S up}"
+            Send "{W Down}"
+            Sleep(1000)
+            Send "{W Up}"
 
             Send "e"
             Sleep(2750)
