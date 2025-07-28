@@ -301,7 +301,7 @@ isAnyChecked(arr) {
                         Send "{Enter}"
                     }
                 } else if ctrl.Type = "Checkbox" {
-                    if (index = 1 || index = 2 || index = 7 || index = 10) {
+                    if (index = 1 || index = 2 || index = 8 || index = 12) {
                         Send "{Down down}{Down up}"
                         Send "{Enter}"
                         Send "{Down down}{Down up}"
