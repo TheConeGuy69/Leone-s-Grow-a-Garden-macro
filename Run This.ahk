@@ -156,7 +156,7 @@ isAnyChecked(arr) {
         Sleep(250)
         Click
 
-        Sleep(500)
+        Sleep(1000)
 
         Send "e"
         Sleep(2750)
@@ -286,7 +286,7 @@ isAnyChecked(arr) {
             index := 1
             for ctrl in EventCheckboxes {
                 if ctrl.Type = "Checkbox" && ctrl.Value {
-                    if (index = 1 || index = 2 || index = 7 || index = 10) {
+                    if (index = 1 || index = 2 || index = 8 || index = 12) {
                         Send "{Down down}{Down up}"
                         Send "{Enter}"
                         Send "{Down down}{Down up}"
