@@ -46,7 +46,7 @@ for egg in ["Common Egg","Common Summer Egg","Rare Summer Egg","Mythical Egg","P
 EventCheckboxes := []
 MyGui.Add("Text", "x390 y10", "Zen Shop")
 yEventPos := 40
-for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar","Zenflare","Zen Crate","Soft Sunshine","Koi","Zen Gnome Crate","Spiked Mango","Pet Shard Tranquil", "Pet Shard Corrupted", "Raiju"] {
+for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar","Corrupt Radar","Zenflare","Zen Crate","Sakura Bush","Soft Sunshine","Koi","Zen Gnome Crate","Spiked Mango","Pet Shard Tranquil", "Pet Shard Corrupted", "Raiju"] {
     ctrl := MyGui.Add("Checkbox", "x390 y" yEventPos, Event)
     ctrl.Tag := Event
     ctrl.Value := true
