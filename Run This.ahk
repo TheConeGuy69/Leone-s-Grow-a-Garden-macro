@@ -199,56 +199,60 @@ isAnyChecked(arr) {
         Send "\"
         Send "{Down down}{Down up}"
 
-        Sleep(1000)
-        Send "{A down}"
-        Sleep(750)
-        Send "{A up}"
-
-        Sleep(500)
-
-        Send "e"
-        Sleep(2750)
-        MouseMove xEggShopPos, yEggShopPos
-        Sleep(100)
-
-        MouseMove xEggShopPos-30, yEggShopPos
-        Sleep(250)
-        Click
-        Sleep(3000)
-        Send "\"
-        Send "{Down down}{Down up}"
-        Sleep(100)
-
-        ctrl := 0
-        for ctrl in eggsCheckboxes {
-            if ctrl.Type = "Checkbox" && ctrl.Value {
-                Send "{Down down}{Down up}"
-                Send "{Enter}"
-                Send "{Down down}{Down up}"
-                Send "{Down down}{Down up}"
-                Loop 30 {
+        if isAnyChecked(eggsCheckboxes) {
+            Sleep(1000)
+            Send "{A down}"
+            Sleep(750)
+            Send "{A up}"
+    
+            Sleep(500)
+    
+            Send "e"
+            Sleep(2750)
+            MouseMove xEggShopPos, yEggShopPos
+            Sleep(100)
+    
+            MouseMove xEggShopPos-30, yEggShopPos
+            Sleep(250)
+            Click
+            Sleep(3000)
+            Send "\"
+            Send "{Down down}{Down up}"
+            Sleep(100)
+    
+            ctrl := 0
+            for ctrl in eggsCheckboxes {
+                if ctrl.Type = "Checkbox" && ctrl.Value {
+                    Send "{Down down}{Down up}"
                     Send "{Enter}"
+                    Send "{Down down}{Down up}"
+                    Send "{Down down}{Down up}"
+                    Loop 30 {
+                        Send "{Enter}"
+                    }
+                } else if ctrl.Type = "Checkbox" {
+                    Send "{Down down}{Down up}"
+                    Send "{Enter}"
+                    Send "{Down down}{Down up}"
+                    Send "{Down down}{Down up}"
                 }
-            } else if ctrl.Type = "Checkbox" {
-                Send "{Down down}{Down up}"
-                Send "{Enter}"
-                Send "{Down down}{Down up}"
-                Send "{Down down}{Down up}"
             }
+    
+            Send "\"
+            Sleep(250)
+            Send "\"
+            Send "{Enter}"
+            Sleep(100)
+            Send "{Enter}"
+            Sleep(670)
+            Send "{Right down}{Right up}"
+            Send "{Right down}{Right up}"
+            Send "{Right down}{Right up}"
+            Send "{Enter}"
+            Send "\"
         }
 
-        Send "\"
-        Sleep(250)
-        Send "\"
-        Send "{Enter}"
-        Sleep(100)
-        Send "{Enter}"
-        Sleep(670)
-        Send "{Right down}{Right up}"
-        Send "{Right down}{Right up}"
-        Send "{Right down}{Right up}"
-        Send "{Enter}"
-        Send "\"
+        
 
         if isAnyChecked(EventCheckboxes) {
             Send "\"
