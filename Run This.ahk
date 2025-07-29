@@ -54,6 +54,10 @@ for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar"
     yEventPos += 25
 }
 
+;auto reconnect
+MyGui.Add("Text", "x10 y665 " )
+MyGui.Add("Checkbox", "x200 y665 " , "Auto-Reconnect")
+
 MyGui.Show()
 MyGui.OnEvent("Close", (*) => ExitApp())
 
@@ -78,22 +82,16 @@ isAnyChecked(arr) {
         Sleep(100)
     }
 
-    Send "\"
-    Send "{Down down}{Down up}"
-    Send "{Enter Down}{Enter Up}"
-    Sleep(1000)
-    Send "\"
-    Send "{W Down}"
-    Sleep(7000)
-    Send "{W Up}"
-    Sleep(100)
-    Send "{A down}"
-    Sleep(1000)
-    Send "{A up}"
-    Sleep(500)
-    Send "{W Down}"
-    Sleep(1000)
-    Send "{W Up}"
+    if (MyGui["Auto-Reconnect"].Value)  {
+            Color := PixelGetColor(A_ScreenWidth / 2, A_ScreenHeight / 2)
+            if (Color != 0xFFFFFF) {
+                MouseMove A_ScreenWidth / 2+30, (A_ScreenHeight * 0.6111111111) -27
+                Sleep(500)
+                MouseMove A_ScreenWidth / 2+60, (A_ScreenHeight * 0.6111111111) -27
+                Click
+                Sleep(1000)
+            }
+        }
 }
 
 ^j::
@@ -352,6 +350,15 @@ isAnyChecked(arr) {
             Sleep(1000)
         }
         countdownGui.Hide()
+        }
+
+        if (MyGui["Auto-Reconnect"].Value) {
+            Color := PixelGetColor(A_ScreenWidth / 2, A_ScreenHeight / 2)
+            if (Color != 0xFFFFFF) {
+                MouseMove A_ScreenWidth / 2+30, (A_ScreenHeight * 0.6111111111)-27
+                Click
+                Sleep(1000)
+            }
         }
 
         MouseMove A_ScreenWidth / 2, A_ScreenHeight / 2
