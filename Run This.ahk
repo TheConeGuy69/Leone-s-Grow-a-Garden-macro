@@ -55,7 +55,7 @@ for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar"
 }
 
 ;auto reconnect
-MyGui.Add("Text", "x10 y665 " )
+MyGui.Add("Text", "x10 y665, Auto Reconnect" )
 MyGui.Add("Checkbox", "x200 y665 " , "Auto-Reconnect")
 
 MyGui.Show()
