@@ -81,17 +81,6 @@ isAnyChecked(arr) {
         Send "{WheelDown}"
         Sleep(100)
     }
-
-    if (MyGui["Auto-Reconnect"].Value)  {
-            Color := PixelGetColor(A_ScreenWidth / 2, A_ScreenHeight / 2)
-            if (Color != 0xFFFFFF) {
-                MouseMove A_ScreenWidth / 2+30, (A_ScreenHeight * 0.6111111111) -27
-                Sleep(500)
-                MouseMove A_ScreenWidth / 2+60, (A_ScreenHeight * 0.6111111111) -27
-                Click
-                Sleep(1000)
-            }
-        }
 }
 
 ^j::
@@ -352,15 +341,16 @@ isAnyChecked(arr) {
         countdownGui.Hide()
         }
 
-        if (MyGui["Auto-Reconnect"].Value) {
+        if (MyGui["Auto-Reconnect"].Value)  {
             Color := PixelGetColor(A_ScreenWidth / 2, A_ScreenHeight / 2)
             if (Color != 0xFFFFFF) {
-                MouseMove A_ScreenWidth / 2+30, (A_ScreenHeight * 0.6111111111)-27
+                MouseMove A_ScreenWidth / 2+30, (A_ScreenHeight * 0.6111111111) -27
+                Sleep(500)
+                MouseMove A_ScreenWidth / 2+60, (A_ScreenHeight * 0.6111111111) -27
                 Click
                 Sleep(1000)
             }
         }
-
         MouseMove A_ScreenWidth / 2, A_ScreenHeight / 2
         showCountdown(300)
     }
