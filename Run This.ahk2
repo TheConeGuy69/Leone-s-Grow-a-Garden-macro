@@ -60,6 +60,7 @@ MyGui.Add("Checkbox", "x200 y665 " , "Auto Reconnect - Only use if getting eggs 
 
 MyGui.Show()
 MyGui.OnEvent("Close", (*) => ExitApp())
+global recconnected := false
 
 isAnyChecked(arr) {
     for ctrl in arr {
@@ -83,11 +84,11 @@ isAnyChecked(arr) {
     }
 }
 
-recconnected := false
 
 ^j::
     {
-    while true {
+        global recconnected
+        while true {
             Loop 30 {
             Send "{WheelUp}"
         }
@@ -188,7 +189,7 @@ recconnected := false
         Send "\"
         Send "{Down down}{Down up}"
 
-        if isAnyChecked(eggsCheckboxes) && !recconnected {
+        if isAnyChecked(eggsCheckboxes) && recconnected = false {
             Sleep(1000)
             Send "{A down}"
             Sleep(750)
@@ -278,7 +279,7 @@ recconnected := false
             ctrl := 0
             index := 1
             for ctrl in EventCheckboxes {
-                if ctrl.Type = "Checkbox" && ctrl.Value && !recconnected {
+                if ctrl.Type = "Checkbox" && ctrl.Value && recconnected = false {
                     if (index = 1 || index = 2 || index = 8 || index = 12) {
                         Send "{Down down}{Down up}"
                         Send "{Enter}"
@@ -352,6 +353,7 @@ recconnected := false
                 Click
                 Sleep(18000)
                 Click
+                global recconnected
                 recconnected := true
             }
         }
