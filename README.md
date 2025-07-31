@@ -10,6 +10,6 @@ This is a macro for the hit roblox game Grow a garden
      - You need to move camera to above your head, looking down on it.
      - Turn your camera to face the gear the pet shop.
      - Align it as perfect as possible (There is some wiggle room but not much)
-  4. It has to be scrolled to the top before starting.
+  4. The shop menus have to be scrolled to the top before starting.
   5. Recall wrench needs to be in first slot.
   6. Press CRTL+J to start the macro. And CRTL + H to stop (or close the menu).
