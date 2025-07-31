@@ -345,7 +345,7 @@ isAnyChecked(arr) {
         }
 
         if (MyGui["Auto Reconnect - Only use if getting eggs or things from events shops aren't important"].Value)  {
-            Color := PixelGetColor(A_ScreenWidth / 2, A_ScreenHeight / 2)
+            Color := PixelGetColor(A_ScreenWidth / 2, (A_ScreenHeight * 0.6111111111) -27)
             if (Color != 0x393b3d) {
                 MouseMove A_ScreenWidth / 2+30, (A_ScreenHeight * 0.6111111111) -27
                 Sleep(500)
