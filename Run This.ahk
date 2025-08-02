@@ -33,8 +33,8 @@ for gear in ["Watering Can","Trading Ticket","Trowel","Recall Wrench","Basic Spr
     yGearPos += 25
 }
 eggsCheckboxes := []
-MyGui.Add("Text", "x200 y440", "Egg Shop")
-yeggPos := 470
+MyGui.Add("Text", "x200 y490", "Egg Shop")
+yeggPos := 510
 for egg in ["Common Egg","Common Summer Egg","Rare Summer Egg","Mythical Egg","Paradise Egg","Bug Egg"] {
     ctrl := MyGui.Add("Checkbox", "x200 y" yeggPos, egg)
     ctrl.Tag := egg
