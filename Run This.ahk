@@ -25,7 +25,7 @@ for item in ["Carrot","Strawberry","Blueberry","Orange Tulip","Tomato","Corn","D
 gearCheckboxes := []
 MyGui.Add("Text", "x200 y10", "Gear Shop")
 yGearPos := 40
-for gear in ["Watering Can","Trowel","Recall Wrench","Basic Sprinkler","Advanced Sprinkler","Medium Toy","Medium Treat","Godly Sprinkler","Magnifying Glass","Tanning Mirror","Master Sprinkler","Cleaning Spray","Favorite Tool","Harvest Tool","Friendship Pot","Levelup Lollipop"] {
+for gear in ["Watering Can","Trading Ticket","Trowel","Recall Wrench","Basic Sprinkler","Advanced Sprinkler","Medium Toy","Medium Treat","Godly Sprinkler","Magnifying Glass","Tanning Mirror","Master Sprinkler","Cleaning Spray","Favorite Tool","Harvest Tool","Friendship Pot","Grandmaster Sprinkler","Levelup Lollipop"] {
     ctrl := MyGui.Add("Checkbox", "x200 y" yGearPos, gear)
     ctrl.Tag := gear
     ctrl.Value := true
@@ -43,20 +43,20 @@ for egg in ["Common Egg","Common Summer Egg","Rare Summer Egg","Mythical Egg","P
     yeggPos += 25
 }
 
-EventCheckboxes := []
-MyGui.Add("Text", "x390 y10", "Zen Shop")
-yEventPos := 40
-for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar","Corrupt Radar","Zenflare","Zen Crate","Sakura Bush","Soft Sunshine","Koi","Zen Gnome Crate","Spiked Mango","Pet Shard Tranquil", "Pet Shard Corrupted", "Raiju"] {
-    ctrl := MyGui.Add("Checkbox", "x390 y" yEventPos, Event)
-    ctrl.Tag := Event
-    ctrl.Value := true
-    EventCheckboxes.Push(ctrl)
-    yEventPos += 25
-}
+;EventCheckboxes := []
+;MyGui.Add("Text", "x390 y10", "Zen Shop")
+;yEventPos := 40
+;for Event in ["Zen Seed Pack","Zen Egg","Hot Spring","Zen Sand","Tranquil Radar","Corrupt Radar","Zenflare","Zen Crate","Sakura Bush","Soft Sunshine","Koi","Zen Gnome Crate","Spiked Mango","Pet Shard Tranquil", "Pet Shard Corrupted", "Raiju"] {
+;    ctrl := MyGui.Add("Checkbox", "x390 y" yEventPos, Event)
+;    ctrl.Tag := Event
+;    ctrl.Value := true
+;    EventCheckboxes.Push(ctrl)
+;    yEventPos += 25
+;}
 
 ;auto reconnect
 MyGui.Add("Text", "x10 y665", "Auto Reconnect" )
-MyGui.Add("Checkbox", "x200 y665 " , "Auto Reconnect - Only use if getting eggs or things from events shops aren't important")
+MyGui.Add("Checkbox", "x200 y665 " , "Auto Reconnect")
 
 MyGui.Show()
 MyGui.OnEvent("Close", (*) => ExitApp())
@@ -244,83 +244,83 @@ isAnyChecked(arr) {
 
         
 
-        if isAnyChecked(EventCheckboxes) {
-            Send "\"
-            Send "{Down down}{Down up}"
-            Send "{Enter Down}{Enter Up}"
-            Sleep(1000)
-            Send "\"
-            Send "{W Down}"
-            Sleep(7000)
-            Send "{W Up}"
-            Sleep(100)
-            Send "{A down}"
-            Sleep(1000)
-            Send "{A up}"
-            Sleep(500)
-            Send "{W Down}"
-            Sleep(1000)
-            Send "{W Up}"
-
-            Send "e"
-            Sleep(2750)
-            MouseMove xEventShopPos, yEventShopPos
-            Sleep(100)
-
-            MouseMove xEventShopPos-30, yEventShopPos
-            Sleep(250)
-            Click
-            Sleep(100)
-            Sleep(3000)
-            Send "\"
-            Send "{Down down}{Down up}"
-            Sleep(100)
-
-            ctrl := 0
-            index := 1
-            for ctrl in EventCheckboxes {
-                if ctrl.Type = "Checkbox" && ctrl.Value && recconnected = false {
-                    if (index = 1 || index = 2 || index = 8 || index = 12) {
-                        Send "{Down down}{Down up}"
-                        Send "{Enter}"
-                        Send "{Down down}{Down up}"
-                        Send "{Down down}{Down up}"
-                    } else {
-                        Send "{Down down}{Down up}"
-                        Send "{Enter}"
-                        Send "{Down down}{Down up}"
-                    }
-                    
-                    Loop 30 {
-                        Send "{Enter}"
-                    }
-                } else if ctrl.Type = "Checkbox" {
-                    if (index = 1 || index = 2 || index = 8 || index = 12) {
-                        Send "{Down down}{Down up}"
-                        Send "{Enter}"
-                        Send "{Down down}{Down up}"
-                        Send "{Down down}{Down up}"
-                    } else {
-                        Send "{Down down}{Down up}"
-                        Send "{Enter}"
-                        Send "{Down down}{Down up}"
-                    }
-                }
-                index++
-            }
-            Send "\"
-            Sleep(250)
-            Send "\"
-            Send "{Enter}"
-            Sleep(100)
-            Send "{Enter}"
-            Sleep(670)
-            Send "{Right down}{Right up}"
-            Send "{Right down}{Right up}"
-            Send "{Right down}{Right up}"
-            Send "{Enter}"
-            Send "\"
-        }
+        ;if isAnyChecked(EventCheckboxes) {
+        ;    Send "\"
+        ;    Send "{Down down}{Down up}"
+        ;    Send "{Enter Down}{Enter Up}"
+        ;    Sleep(1000)
+        ;    Send "\"
+        ;    Send "{W Down}"
+        ;    Sleep(7000)
+        ;    Send "{W Up}"
+        ;    Sleep(100)
+        ;    Send "{A down}"
+        ;    Sleep(1000)
+        ;    Send "{A up}"
+        ;    Sleep(500)
+        ;    Send "{W Down}"
+        ;    Sleep(1000)
+        ;    Send "{W Up}"
+;
+        ;    Send "e"
+        ;    Sleep(2750)
+        ;    MouseMove xEventShopPos, yEventShopPos
+        ;    Sleep(100)
+;
+        ;    MouseMove xEventShopPos-30, yEventShopPos
+        ;    Sleep(250)
+        ;    Click
+        ;    Sleep(100)
+        ;    Sleep(3000)
+        ;    Send "\"
+        ;    Send "{Down down}{Down up}"
+        ;    Sleep(100)
+;
+        ;    ctrl := 0
+        ;    index := 1
+        ;    for ctrl in EventCheckboxes {
+        ;        if ctrl.Type = "Checkbox" && ctrl.Value && recconnected = false {
+        ;            if (index = 1 || index = 2 || index = 8 || index = 12) {
+        ;                Send "{Down down}{Down up}"
+        ;                Send "{Enter}"
+        ;                Send "{Down down}{Down up}"
+        ;                Send "{Down down}{Down up}"
+        ;            } else {
+        ;                Send "{Down down}{Down up}"
+        ;                Send "{Enter}"
+        ;                Send "{Down down}{Down up}"
+        ;            }
+        ;            
+        ;            Loop 30 {
+        ;                Send "{Enter}"
+        ;            }
+        ;        } else if ctrl.Type = "Checkbox" {
+        ;            if (index = 1 || index = 2 || index = 8 || index = 12) {
+        ;                Send "{Down down}{Down up}"
+        ;                Send "{Enter}"
+        ;                Send "{Down down}{Down up}"
+        ;                Send "{Down down}{Down up}"
+        ;            } else {
+        ;                Send "{Down down}{Down up}"
+        ;                Send "{Enter}"
+        ;                Send "{Down down}{Down up}"
+        ;            }
+        ;        }
+        ;        index++
+        ;    }
+        ;    Send "\"
+        ;    Sleep(250)
+        ;    Send "\"
+        ;    Send "{Enter}"
+        ;    Sleep(100)
+        ;    Send "{Enter}"
+        ;    Sleep(670)
+        ;    Send "{Right down}{Right up}"
+        ;    Send "{Right down}{Right up}"
+        ;    Send "{Right down}{Right up}"
+        ;    Send "{Enter}"
+        ;    Send "\"
+        ;}
 
         Sleep(2000)
         Send "\"
@@ -344,7 +344,7 @@ isAnyChecked(arr) {
         countdownGui.Hide()
         }
 
-        if (MyGui["Auto Reconnect - Only use if getting eggs or things from events shops aren't important"].Value)  {
+        if (MyGui["Auto Reconnect"].Value)  {
             Color := PixelGetColor(A_ScreenWidth / 2, (A_ScreenHeight * 0.6111111111) -27)
             if (Color != 0x393b3d) {
                 MouseMove A_ScreenWidth / 2+30, (A_ScreenHeight * 0.6111111111) -27
