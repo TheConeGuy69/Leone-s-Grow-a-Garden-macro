@@ -1,7 +1,9 @@
 # Leone's Grow a Garden macro
+# robloc broke it again and im too lazy to reprogram
 This is a macro for the hit roblox game Grow a garden
 
-<img width="520" height="688" alt="image" src="https://github.com/user-attachments/assets/fa412e7e-04c8-4862-a8be-2e25a5aeaf91" />
+<img width="338" height="716" alt="image" src="https://github.com/user-attachments/assets/9ffbb0ca-0ca9-45e8-8f93-39457679ae1d" />
+
 
 ## INSTRUCTIONS FOR USE
   1. You need Auto Hotkey V2 to run this. You can get it here: https://www.autohotkey.com/.
