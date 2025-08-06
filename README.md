@@ -1,5 +1,6 @@
 # Leone's Grow a Garden macro
-# robloc broke it again and im too lazy to reprogram
+# I TRYED TO FIX BUT THE NEW THING IS SO UNPREDICTABLE D:
+
 This is a macro for the hit roblox game Grow a garden
 
 <img width="338" height="716" alt="image" src="https://github.com/user-attachments/assets/9ffbb0ca-0ca9-45e8-8f93-39457679ae1d" />

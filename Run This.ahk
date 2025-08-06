@@ -72,15 +72,10 @@ isAnyChecked(arr) {
 
 ^t::
 {
-    Loop 30 {
-        Send "{WheelUp}"
-    }
-
-    Sleep(1000)
-
-    Loop 6 {
-        Send "{WheelDown}"
-        Sleep(100)
+    for ctrl in seedCheckboxes {
+        if ctrl.Type = "Checkbox" {
+            Send "{Up down}{Up up}"
+        }
     }
 }
 
@@ -101,9 +96,7 @@ isAnyChecked(arr) {
         }
 
         Send "\"
-        Send "{Right down}{Right up}"
-        Send "{Right down}{Right up}"
-        Send "{Right down}{Right up}"
+        Send "{Up}"
         Sleep(1000)
         Send "{Enter}"
         Send "{Enter}"
@@ -122,6 +115,7 @@ isAnyChecked(arr) {
                 Send "{Down down}{Down up}"
                 Send "{Enter}"
                 Send "{Down down}{Down up}"
+                Send "{Left down}{Left up}"
                 Loop 30 {
                     Send "{Enter}"
                 }
@@ -132,9 +126,18 @@ isAnyChecked(arr) {
             }
         }
 
-        Send "\"
-        Sleep(250)
-        Send "\"
+        Sleep(100)
+        Send "{Up down}{Up up}"
+        Send "{Enter}"
+        Sleep(100)
+        Send "{Enter}"
+
+        for ctrl in seedCheckboxes {
+            if ctrl.Type = "Checkbox" {
+                Send "{Up down}{Up up}"
+            }
+        }
+
         Send "{Enter}"
         Sleep(100)
         Send "{Enter}"
@@ -159,15 +162,26 @@ isAnyChecked(arr) {
         Sleep(3000)
         Send "\"
         Send "\"
-        Send "{Down down}{Down up}"
+        Send "{Up down}{Up up}"
+        Send "{Up down}{Up up}"
+        Send "{Up down}{Up up}"
         Sleep(100)
         ;gearshop add
         ctrl := 0
+        index := 1
         for ctrl in gearCheckboxes {
             if ctrl.Type = "Checkbox" && ctrl.Value {
-                Send "{Down down}{Down up}"
-                Send "{Enter}"
-                Send "{Down down}{Down up}"
+                if (index = 3) {
+                    Send "{Down down}{Down up}"
+                    Send "{Enter}"
+                    Send "{Down down}{Down up}"
+                } else {
+                    Send "{Down down}{Down up}"
+                    Send "{Enter}"
+                    Send "{Down down}{Down up}"
+                    Send "{Left down}{Left up}"
+                }
+                
                 Loop 30 {
                     Send "{Enter}"
                 }
@@ -176,18 +190,23 @@ isAnyChecked(arr) {
                 Send "{Enter}"
                 Send "{Down down}{Down up}"
             }
+            index++
         }
-        Send "\"
-        Sleep(250)
-        Send "\"
+
+        for ctrl in gearCheckboxes {
+            if ctrl.Type = "Checkbox" {
+                Send "{Up down}{Up up}"
+            }
+        }
+
         Send "{Enter}"
         Sleep(100)
         Send "{Enter}"
         Sleep(670)
+
         Send "{Up down}{Up up}"
-        Send "{Enter}"
+        Send "{Enter down}{Enter up}"
         Send "\"
-        Send "{Down down}{Down up}"
 
         if isAnyChecked(eggsCheckboxes) && recconnected = false {
             Sleep(1000)
@@ -207,7 +226,11 @@ isAnyChecked(arr) {
             Click
             Sleep(3000)
             Send "\"
-            Send "{Down down}{Down up}"
+            Send "{Up down}{Up up}"
+            Send "{Up down}{Up up}"
+            Send "{Up down}{Up up}"
+            Send "{Up down}{Up up}"
+            Send "{Up down}{Up up}"
             Sleep(100)
     
             ctrl := 0
@@ -217,6 +240,7 @@ isAnyChecked(arr) {
                     Send "{Enter}"
                     Send "{Down down}{Down up}"
                     Send "{Down down}{Down up}"
+                    Send "{Left down}{Left up}"
                     Loop 30 {
                         Send "{Enter}"
                     }
@@ -228,21 +252,26 @@ isAnyChecked(arr) {
                 }
             }
     
-            Send "\"
-            Sleep(250)
-            Send "\"
+            for ctrl in eggsCheckboxes {
+            if ctrl.Type = "Checkbox" {
+                Send "{Up down}{Up up}"
+                Send "{Up down}{Up up}"
+            }
+            }
+
+            Send "{Down down}{Down up}"
             Send "{Enter}"
             Sleep(100)
             Send "{Enter}"
             Sleep(670)
+
+            Send "{Up down}{Up up}"
+            Send "{Up down}{Up up}"
+            Send "{Down down}{Down up}"
             Send "{Right down}{Right up}"
-            Send "{Right down}{Right up}"
-            Send "{Right down}{Right up}"
-            Send "{Enter}"
+            Send "{Enter down}{Enter up}"
             Send "\"
         }
-
-        
 
         ;if isAnyChecked(EventCheckboxes) {
         ;    Send "\"
@@ -324,7 +353,7 @@ isAnyChecked(arr) {
 
         Sleep(2000)
         Send "\"
-        Send "{Down down}{Down up}"
+        Send "{Up down}{Up up}"
         Send "{Right down}{Right up}"
         Send "{Enter}"
         Send "\"
